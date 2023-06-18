@@ -58,26 +58,27 @@ La información contenida en la muestra es la siguiente:
 
 import pandas as pd
 
+RUTA = "mushrooms.csv"
 
 def pregunta_01():
     """
     En esta función se realiza la carga de datos.
     """
     # Lea el archivo `mushrooms.csv` y asignelo al DataFrame `df`
-    df = ____
+    df = pd.read_csv(RUTA)
 
     # Remueva la columna `veil-type` del DataFrame `df`.
     # Esta columna tiene un valor constante y no sirve para la detección de hongos.
-    ____.____(____)
+    df.drop(columns=['veil-type'], inplace=True)
 
     # Asigne la columna `type` a la variable `y`.
-    ____ = ____
+    y = df['type'].copy()
 
     # Asigne una copia del dataframe `df` a la variable `X`.
-    ____ = ____.____(____)
+    X = df.copy()
 
     # Remueva la columna `type` del DataFrame `X`.
-    ____.____(____)
+    X.drop(columns=['type'], inplace=True)
 
     # Retorne `X` y `y`
     return X, y
